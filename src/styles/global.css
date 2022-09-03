@@ -3,9 +3,10 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Mulish', sans-serif;
-  color: #2a2a2a;
 }
 
 body{
   background-color:#fffffe;
+  height: 100vh;
+  
 }

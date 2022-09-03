@@ -1,6 +1,6 @@
 import './styles/global.css'
 import Routes from './Routes/Routes'
-import { createTheme, ThemeProvider } from '@mui/material';
+import { Container, createTheme, ThemeProvider } from '@mui/material';
 import Header from './Components/Common/Header/Header';
 
 const theme = createTheme({
@@ -10,9 +10,18 @@ const theme = createTheme({
     },
     secondary: {
       main: '#ff8e3c'
-    },
+    }
   },
-});
+
+  typography: {
+    fontFamily: [
+      'Mulish,sans-serif',
+    ]
+
+  }
+
+},
+);
 
 function App() {
 
@@ -20,7 +29,9 @@ function App() {
     <ThemeProvider theme={theme}>
       <div className="App">
         <Header />
-        <Routes />
+        <Container fluid sx={{ heigth: '100%', paddingTop: '80px' }}>
+          <Routes />
+        </Container>
       </div>
     </ThemeProvider>
 

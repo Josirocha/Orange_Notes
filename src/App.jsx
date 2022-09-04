@@ -29,7 +29,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <div className="App">
         <Header />
-        <Container fluid sx={{ heigth: '100%', paddingTop: '80px' }}>
+        <Container sx={{ heigth: '100%', paddingTop: '80px' }}>
           <Routes />
         </Container>
       </div>

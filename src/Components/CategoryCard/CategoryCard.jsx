@@ -12,10 +12,13 @@ import CreateOutlinedIcon from "@mui/icons-material/CreateOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import DeleteCategoryModal from "../DeleteCategoryModal/DeleteCategoryModal";
 import EditCategoryModal from "../EditCategoryModal/EditCategoryModal";
+import {  useNavigate } from "react-router-dom";
 
-const CategoryCard = ({ name, description, image, onUpdate, index }) => {
+const CategoryCard = ({ name, description, image, onUpdate, index, id }) => {
     const [openModalDelete, setOpenModalDelete] = useState(false);
     const [openModalEdit, setOpenModalEdit] = useState(false);
+
+    const navigate = useNavigate()
 
     function handleCloseDeleteModal(value) {
         setOpenModalDelete(false);
@@ -79,6 +82,7 @@ const CategoryCard = ({ name, description, image, onUpdate, index }) => {
                         color="secondary"
                         variant="contained"
                         sx={{ color: "#eff0f3" }}
+                        onClick={()=>navigate(`notes/${id}`)}
                     >
                         Abrir
                     </Button>

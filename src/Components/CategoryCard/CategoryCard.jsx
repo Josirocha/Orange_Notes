@@ -29,17 +29,28 @@ const CategoryCard = ({ name, description, image, onUpdate, index }) => {
 
     return (
         <>
-            <Card sx={{ minWidth: 345, backgroundColor: "#eff0f3" }}>
-                <CardMedia component="img" height="140" image={image} />
+            <Card
+                sx={{
+                    width: "100%",
+                    maxWidth: "375px",
+                    backgroundColor: "#eff0f3",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                }}
+            >
+                <div>
+                    <CardMedia component="img" height="140" image={image} />
 
-                <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                        {name}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                        {description}
-                    </Typography>
-                </CardContent>
+                    <CardContent>
+                        <Typography gutterBottom variant="h5" component="div">
+                            {name}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                            {description}
+                        </Typography>
+                    </CardContent>
+                </div>
 
                 <CardActions
                     sx={{

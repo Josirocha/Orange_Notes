@@ -6,11 +6,28 @@ import {
     CardActions,
     Button,
     TextField,
-    Box
+    Box,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 
 const CreateCategoryModal = ({ open, onClose }) => {
+    const [name, setName] = useState();
+    const [description, setDescription] = useState();
+
+    function handleSubmit() {
+        saveCategory();
+        onClose();
+    }
+
+    function saveCategory() {
+        const previousData = JSON.parse(localStorage.getItem("category")) || [];
+        const stringData = JSON.stringify([
+            ...previousData,
+            { name, description },
+        ]);
+        localStorage.setItem("category", stringData);
+    }
+
     return (
         <Modal
             disableEnforceFocus
@@ -42,7 +59,7 @@ const CreateCategoryModal = ({ open, onClose }) => {
                     <Box
                         sx={{
                             display: "flex",
-                            flexDirection: 'column',
+                            flexDirection: "column",
                             gap: 2,
                         }}
                     >
@@ -51,6 +68,8 @@ const CreateCategoryModal = ({ open, onClose }) => {
                             variant="outlined"
                             label="nome da categoria"
                             color="secondary"
+                            value={name}
+                            onChange={(event) => setName(event.target.value)}
                         />
                         <TextField
                             fullWidth
@@ -59,6 +78,10 @@ const CreateCategoryModal = ({ open, onClose }) => {
                             variant="outlined"
                             label="descrição"
                             color="secondary"
+                            value={description}
+                            onChange={(event) =>
+                                setDescription(event.target.value)
+                            }
                         />
                     </Box>
                 </CardContent>
@@ -76,6 +99,7 @@ const CreateCategoryModal = ({ open, onClose }) => {
                         color="secondary"
                         variant="contained"
                         sx={{ color: "#eff0f3" }}
+                        onClick={handleSubmit}
                     >
                         Criar Categoria
                     </Button>

@@ -14,12 +14,15 @@ import {
 import CreateNoteModal from "../../Components/CreateNoteModal/CreateNoteModal";
 import { useParams } from "react-router-dom";
 import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
+import Note from "../../Components/Note/Note";
 
 const Notes = () => {
     const [open, setOpen] = useState(false);
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
     const [image, setImage] = useState("");
+    const [notes, setNotes] = useState([]);
+
     const { id } = useParams();
 
     useEffect(() => {
@@ -28,6 +31,9 @@ const Notes = () => {
         setName(category.name);
         setDescription(category.description);
         setImage(category.image);
+
+        const noteData = JSON.parse(localStorage.getItem(id));
+        setNotes(noteData);
     }, [open]);
 
     return (
@@ -53,14 +59,13 @@ const Notes = () => {
                         </Typography>
 
                         <FormGroup>
-                            <FormControlLabel
-                                control={<Checkbox color="secondary" />}
-                                label="Tarefas"
-                            />
-                            <FormControlLabel
-                                control={<Checkbox color="secondary" />}
-                                label="Disabled"
-                            />
+                            {notes.map((item) => (
+                                <Note
+                                    key={item.id}
+                                    id={item.id}
+                                    label={item.note}
+                                />
+                            ))}
                         </FormGroup>
                     </CardContent>
                 </div>
@@ -90,7 +95,11 @@ const Notes = () => {
                 </CardActions>
             </Card>
 
-            <CreateNoteModal open={open} onClose={() => setOpen(false)} id={id} />
+            <CreateNoteModal
+                open={open}
+                onClose={() => setOpen(false)}
+                id={id}
+            />
         </>
     );
 };

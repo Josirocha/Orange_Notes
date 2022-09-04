@@ -65,7 +65,7 @@ const DeleteCategoryModal = ({ open, onClose, index }) => {
                         justifyContent: "space-between",
                     }}
                 >
-                    <Button color="secondary" onClick={onClose}>
+                    <Button color="secondary" onClick={() => onClose()}>
                         Fechar
                     </Button>
 

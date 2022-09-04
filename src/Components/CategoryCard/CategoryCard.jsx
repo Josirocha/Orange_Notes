@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import {
     Card,
     CardActions,
@@ -10,15 +10,21 @@ import {
 } from "@mui/material";
 import CreateOutlinedIcon from "@mui/icons-material/CreateOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
-import DeleteCategoryModal from "../DeleteCategoryModal/DeleteCategoryModal"
+import DeleteCategoryModal from "../DeleteCategoryModal/DeleteCategoryModal";
+import EditCategoryModal from "../EditCategoryModal/EditCategoryModal";
 
 const CategoryCard = ({ name, description, image, onUpdate, index }) => {
-
     const [openModalDelete, setOpenModalDelete] = useState(false);
+    const [openModalEdit, setOpenModalEdit] = useState(false);
 
     function handleCloseDeleteModal(value) {
-        setOpenModalDelete(false)
-        onUpdate(value)
+        setOpenModalDelete(false);
+        onUpdate(value);
+    }
+
+    function handleCloseEditModal(value) {
+        setOpenModalEdit(false);
+        onUpdate(value);
     }
 
     return (
@@ -41,7 +47,11 @@ const CategoryCard = ({ name, description, image, onUpdate, index }) => {
                     }}
                 >
                     <div>
-                        <IconButton size="small" color="secondary">
+                        <IconButton
+                            size="small"
+                            color="secondary"
+                            onClick={() => setOpenModalEdit(true)}
+                        >
                             <CreateOutlinedIcon />
                         </IconButton>
 
@@ -68,6 +78,13 @@ const CategoryCard = ({ name, description, image, onUpdate, index }) => {
                 index={index}
                 open={openModalDelete}
                 onClose={handleCloseDeleteModal}
+            />
+
+            <EditCategoryModal
+                index={index}
+                open={openModalEdit}
+                onClose={handleCloseEditModal}
+                values={{ name, description, image, index }}
             />
         </>
     );

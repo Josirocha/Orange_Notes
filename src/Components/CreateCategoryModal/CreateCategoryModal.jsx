@@ -11,8 +11,9 @@ import {
 import React, { useState } from "react";
 
 const CreateCategoryModal = ({ open, onClose }) => {
-    const [name, setName] = useState();
-    const [description, setDescription] = useState();
+    const [name, setName] = useState('');
+    const [description, setDescription] = useState('');
+    const [image, setImage] = useState('');
 
     function handleSubmit() {
         saveCategory();
@@ -23,7 +24,7 @@ const CreateCategoryModal = ({ open, onClose }) => {
         const previousData = JSON.parse(localStorage.getItem("category")) || [];
         const stringData = JSON.stringify([
             ...previousData,
-            { name, description },
+            { name, description, image },
         ]);
         localStorage.setItem("category", stringData);
     }
@@ -70,6 +71,14 @@ const CreateCategoryModal = ({ open, onClose }) => {
                             color="secondary"
                             value={name}
                             onChange={(event) => setName(event.target.value)}
+                        />
+                        <TextField
+                            fullWidth
+                            variant="outlined"
+                            label="url da imagem"
+                            color="secondary"
+                            value={image}
+                            onChange={(event) => setImage(event.target.value)}
                         />
                         <TextField
                             fullWidth

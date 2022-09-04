@@ -23,7 +23,7 @@ const CreateNoteModal = ({ open, onClose, id }) => {
         const previousData = JSON.parse(localStorage.getItem(id)) || [];
         const stringData = JSON.stringify([
             ...previousData,
-            { id: uuidv4(), note },
+            { id: uuidv4(), note, checked: false },
         ]);
         localStorage.setItem(id, stringData);
     }

@@ -6,10 +6,7 @@ import {
     CardMedia,
     CardContent,
     CardActions,
-    IconButton,
     FormGroup,
-    FormControlLabel,
-    Checkbox,
 } from "@mui/material";
 import CreateNoteModal from "../../Components/CreateNoteModal/CreateNoteModal";
 import { useParams } from "react-router-dom";
@@ -25,6 +22,17 @@ const Notes = () => {
 
     const { id } = useParams();
 
+    function handleNoteChange(noteId, checked) {
+        const updatedNotes = notes.map((item) => {
+            if (item.id === noteId) {
+                item.checked = checked;
+            }
+            return item;
+        });
+        setNotes(updatedNotes);
+        localStorage.setItem(id, JSON.stringify(updatedNotes));
+    }
+
     useEffect(() => {
         const categories = JSON.parse(localStorage.getItem("category"));
         const category = categories.find((i) => i.id === id);
@@ -32,7 +40,7 @@ const Notes = () => {
         setDescription(category.description);
         setImage(category.image);
 
-        const noteData = JSON.parse(localStorage.getItem(id));
+        const noteData = JSON.parse(localStorage.getItem(id)) || [];
         setNotes(noteData);
     }, [open]);
 
@@ -58,12 +66,14 @@ const Notes = () => {
                             {description}
                         </Typography>
 
-                        <FormGroup>
+                        <FormGroup name="notes">
                             {notes.map((item) => (
                                 <Note
                                     key={item.id}
                                     id={item.id}
                                     label={item.note}
+                                    checked={item.checked}
+                                    onChange={handleNoteChange}
                                 />
                             ))}
                         </FormGroup>

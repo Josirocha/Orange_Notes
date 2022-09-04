@@ -48,6 +48,11 @@ npm run dev
 
 ![Orange Notes - pagina inicial](https://user-images.githubusercontent.com/102763035/188335464-d72120c5-b760-4578-b830-6589f24b29be.gif)
 
+- A Categoria poderá ser atualizada ( nome, url de imagem e descrição) e tbm deletada
+
+![atualizar e deletar](https://user-images.githubusercontent.com/102763035/188336494-961dfe6c-aaa5-4197-8e0e-1ca0d5930697.gif)
 
 
+- Ao clicar em abrir, será direcionado para a pagina de notas, onde poderá adicionar as tarefas, elas  são gerenciadas por chekbox. Essas tarefas podem ser deletadas. Ao ser concluida a primeira tarefa aparecerá uma barra de progresso, que chegará a 100% quando todos as tarefas tiverem acabado
 
+![abrir e colocar tarefas](https://user-images.githubusercontent.com/102763035/188336605-2c245c69-6395-42f4-b79a-1f26580cf1b0.gif)

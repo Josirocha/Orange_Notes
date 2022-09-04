@@ -11,30 +11,29 @@ import CreateOutlinedIcon from "@mui/icons-material/CreateOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import React from "react";
 
-const CategoryCard = () => {
+const CategoryCard = ({ name, description, image }) => {
     return (
-        <Card sx={{ maxWidth: 345, backgroundColor: "#eff0f3" }}>
+        <Card sx={{ minWidth: 345,  backgroundColor: "#eff0f3" }}>
             <CardMedia
                 component="img"
-                alt="green iguana"
                 height="140"
-                image="https://picsum.photos/200/300"
+                image={image}
             />
 
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                    Lizard
+                    {name}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                    Lizards are a widespread group of squamate reptiles, with
-                    over 6,000 species, ranging across all continents except
-                    Antarctica
+                    {description}
                 </Typography>
             </CardContent>
 
-            <CardActions sx={{
-                justifyContent: 'space-between'
-            }}>
+            <CardActions
+                sx={{
+                    justifyContent: "space-between",
+                }}
+            >
                 <div>
                     <IconButton size="small" color="secondary">
                         <CreateOutlinedIcon />

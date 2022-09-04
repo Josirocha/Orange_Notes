@@ -55,7 +55,7 @@ const Notes = () => {
         const checkedNotes = notes.filter((item) => item.checked).length;
         const totalNotes = notes.length;
 
-        const percent = (checkedNotes / totalNotes) * 100;
+        const percent = Math.round((checkedNotes / totalNotes) * 100);
 
         setNotesPercent(percent);
     }, [notes]);

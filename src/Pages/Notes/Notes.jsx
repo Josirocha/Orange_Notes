@@ -7,6 +7,8 @@ import {
     CardContent,
     CardActions,
     FormGroup,
+    LinearProgress,
+    Box,
 } from "@mui/material";
 import CreateNoteModal from "../../Components/CreateNoteModal/CreateNoteModal";
 import { useParams } from "react-router-dom";
@@ -19,6 +21,7 @@ const Notes = () => {
     const [description, setDescription] = useState("");
     const [image, setImage] = useState("");
     const [notes, setNotes] = useState([]);
+    const [notesPercent, setNotesPercent] = useState(0);
 
     const { id } = useParams();
 
@@ -34,9 +37,8 @@ const Notes = () => {
     }
 
     function handleDelete(values) {
-        setNotes(values)
+        setNotes(values);
     }
-
 
     useEffect(() => {
         const categories = JSON.parse(localStorage.getItem("category"));
@@ -48,6 +50,15 @@ const Notes = () => {
         const noteData = JSON.parse(localStorage.getItem(id)) || [];
         setNotes(noteData);
     }, [open]);
+
+    useEffect(() => {
+        const checkedNotes = notes.filter((item) => item.checked).length;
+        const totalNotes = notes.length;
+
+        const percent = (checkedNotes / totalNotes) * 100;
+
+        setNotesPercent(percent);
+    }, [notes]);
 
     return (
         <>
@@ -87,12 +98,14 @@ const Notes = () => {
                     </CardContent>
                 </div>
 
-                <CardActions
-                    sx={{
-                        justifyContent: "space-between",
-                    }}
-                >
-                    <div>
+                <CardActions>
+                    <Box
+                        sx={{
+                            display: "flex",
+                            alignItems: "center",
+                            width: "200px",
+                        }}
+                    >
                         <Button
                             color="secondary"
                             onClick={() => setOpen(true)}
@@ -100,15 +113,35 @@ const Notes = () => {
                         >
                             Nova nota
                         </Button>
-                    </div>
+                    </Box>
 
-                    <Button
-                        color="secondary"
-                        variant="contained"
-                        sx={{ color: "#eff0f3" }}
+                    <Box
+                        sx={{
+                            display: "flex",
+                            alignItems: "center",
+                            width: "100%",
+                        }}
                     >
-                        Abrir
-                    </Button>
+                        {notes.length ? (
+                            <>
+                                <Box sx={{ width: "100%", mr: 1 }}>
+                                    <LinearProgress
+                                        color="secondary"
+                                        value={notesPercent}
+                                        variant="determinate"
+                                    />
+                                </Box>
+                                <Box sx={{ minWidth: 35 }}>
+                                    <Typography
+                                        variant="body2"
+                                        color="text.secondary"
+                                    >{`${notesPercent}%`}</Typography>
+                                </Box>
+                            </>
+                        ) : (
+                            ""
+                        )}
+                    </Box>
                 </CardActions>
             </Card>
 

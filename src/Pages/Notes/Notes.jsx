@@ -33,6 +33,11 @@ const Notes = () => {
         localStorage.setItem(id, JSON.stringify(updatedNotes));
     }
 
+    function handleDelete(values) {
+        setNotes(values)
+    }
+
+
     useEffect(() => {
         const categories = JSON.parse(localStorage.getItem("category"));
         const category = categories.find((i) => i.id === id);
@@ -71,9 +76,11 @@ const Notes = () => {
                                 <Note
                                     key={item.id}
                                     id={item.id}
+                                    categoryId={id}
                                     label={item.note}
                                     checked={item.checked}
                                     onChange={handleNoteChange}
+                                    onDelete={handleDelete}
                                 />
                             ))}
                         </FormGroup>

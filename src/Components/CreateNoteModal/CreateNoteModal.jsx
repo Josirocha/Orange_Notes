@@ -16,6 +16,7 @@ const CreateNoteModal = ({ open, onClose, id }) => {
 
     function handleSubmit() {
         saveNote();
+        setNote("")
         onClose();
     }
 

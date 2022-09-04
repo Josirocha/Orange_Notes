@@ -1,21 +1,47 @@
 import React from "react";
-import { FormControlLabel, Checkbox, Typography } from "@mui/material";
+import {
+    FormControlLabel,
+    Checkbox,
+    Typography,
+    IconButton,
+} from "@mui/material";
+import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 
-const Note = ({ label, id, onChange, checked }) => {
+const Note = ({ label, id, onChange, onDelete, checked, categoryId }) => {
+    function handleDelete() {
+        const previousData = JSON.parse(localStorage.getItem(categoryId));
+        const updatedData = previousData.filter((item) => item.id != id);
+        localStorage.setItem(categoryId, JSON.stringify(updatedData));
+        onDelete(updatedData);
+    }
+
     return (
-        <FormControlLabel
-            control={
-                <Checkbox
-                    checked={checked}
-                    color="secondary"
-                    onChange={(e) => onChange(id, e.target.checked)}
-                    name="notes"
-                />
-            }
-            label={<Typography sx={{
-                textDecoration: checked ? 'line-through' : ''
-            }}>{label}</Typography>}
-        />
+        <div>
+            <FormControlLabel
+                control={
+                    <Checkbox
+                        checked={checked}
+                        color="secondary"
+                        onChange={(e) => onChange(id, e.target.checked)}
+                        name="notes"
+                    />
+                }
+                label={
+                    <Typography
+                        sx={{
+                            textDecoration: checked ? "line-through" : "",
+                        }}
+                    >
+                        {label}
+                    </Typography>
+                }
+            />
+            <span>
+                <IconButton onClick={handleDelete}>
+                    <DeleteOutlineOutlinedIcon />
+                </IconButton>
+            </span>
+        </div>
     );
 };
 

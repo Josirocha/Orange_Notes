@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Box } from "@mui/material";
 import CategoryCard from "../CategoryCard/CategoryCard";
 
@@ -10,6 +10,7 @@ const CategoryList = ({ data, onUpdate }) => {
                     <CategoryCard
                         key={item.id}
                         index={index}
+                        id={item.id}
                         name={item.name}
                         description={item.description}
                         image={item.image}

@@ -5,6 +5,9 @@
 
 ![Captura de Tela (28)](https://user-images.githubusercontent.com/102763035/188335478-0a87c17b-135f-4291-9d06-ec1f96c733a1.png)
 
+## 📑Build da Aplicação no Vercel
+[Orange Notes](https://orange-notes-g1d6ai1re-josirocha1.vercel.app/)
+
 
 ## ⚙️ Softwares & Ferramentas utilizadas neste projeto 
 -  [React (Vite)](https://vitejs.dev/guide/#trying-vite-online)

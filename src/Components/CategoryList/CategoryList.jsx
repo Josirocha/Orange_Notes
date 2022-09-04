@@ -8,7 +8,7 @@ const CategoryList = ({ data, onUpdate }) => {
             <Box sx={{ py: 2, flexWrap: "wrap", display: "flex", gap: 3 }}>
                 {data.map((item, index) => (
                     <CategoryCard
-                        key={index}
+                        key={item.id}
                         index={index}
                         name={item.name}
                         description={item.description}

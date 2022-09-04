@@ -9,6 +9,7 @@ import {
     Box,
 } from "@mui/material";
 import React, { useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
 
 const CreateCategoryModal = ({ open, onClose }) => {
     const [name, setName] = useState('');
@@ -24,7 +25,7 @@ const CreateCategoryModal = ({ open, onClose }) => {
         const previousData = JSON.parse(localStorage.getItem("category")) || [];
         const stringData = JSON.stringify([
             ...previousData,
-            { name, description, image },
+            { name, description, image, id: uuidv4() },
         ]);
         localStorage.setItem("category", stringData);
     }

@@ -56,3 +56,7 @@ npm run dev
 - Ao clicar em abrir, será direcionado para a pagina de notas, onde poderá adicionar as tarefas, elas  são gerenciadas por chekbox. Essas tarefas podem ser deletadas. Ao ser concluida a primeira tarefa aparecerá uma barra de progresso, que chegará a 100% quando todos as tarefas tiverem acabado
 
 ![abrir e colocar tarefas](https://user-images.githubusercontent.com/102763035/188336605-2c245c69-6395-42f4-b79a-1f26580cf1b0.gif)
+
+<h4 align="center"> 
+	🚧 Orange Notes 🚀 Em construção...  🚧
+</h4>

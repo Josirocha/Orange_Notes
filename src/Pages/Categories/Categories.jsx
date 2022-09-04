@@ -24,7 +24,7 @@ const Categories = () => {
             <Box sx={{ py: 2 }}>
                 <CreateCategory onClick={() => setOpen(true)} />
             </Box>
-            <CategoryList data={data} />
+            <CategoryList data={data} onUpdate={(value) => setData(value)} />
 
             <CreateCategoryModal open={open} onClose={() => setOpen(false)} />
         </>

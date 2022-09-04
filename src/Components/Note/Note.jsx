@@ -1,5 +1,5 @@
 import React from "react";
-import { FormControlLabel, Checkbox } from "@mui/material";
+import { FormControlLabel, Checkbox, Typography } from "@mui/material";
 
 const Note = ({ label, id, onChange, checked }) => {
     return (
@@ -12,7 +12,9 @@ const Note = ({ label, id, onChange, checked }) => {
                     name="notes"
                 />
             }
-            label={label}
+            label={<Typography sx={{
+                textDecoration: checked ? 'line-through' : ''
+            }}>{label}</Typography>}
         />
     );
 };

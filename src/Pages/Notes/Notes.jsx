@@ -9,11 +9,14 @@ import {
     FormGroup,
     LinearProgress,
     Box,
+    IconButton,
 } from "@mui/material";
 import CreateNoteModal from "../../Components/CreateNoteModal/CreateNoteModal";
 import { useParams } from "react-router-dom";
 import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Note from "../../Components/Note/Note";
+import { useNavigate } from "react-router-dom";
 
 const Notes = () => {
     const [open, setOpen] = useState(false);
@@ -24,6 +27,8 @@ const Notes = () => {
     const [notesPercent, setNotesPercent] = useState(0);
 
     const { id } = useParams();
+
+    const navigate = useNavigate();
 
     function handleNoteChange(noteId, checked) {
         const updatedNotes = notes.map((item) => {
@@ -60,8 +65,15 @@ const Notes = () => {
         setNotesPercent(percent);
     }, [notes]);
 
+    function handlePrevious() {
+        navigate("/");
+    }
+
     return (
         <>
+            <IconButton onClick={handlePrevious} size="small" color="secondary">
+                <ArrowBackIcon/> <Typography>voltar</Typography>
+            </IconButton>
             <Card
                 sx={{
                     width: "100%",
